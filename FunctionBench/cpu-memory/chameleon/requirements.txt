@@ -1,0 +1,5 @@
+chameleon==3.10.2
+# Chameleon 3.x imports pkg_resources (setuptools); 镜像里若未装会报 ModuleNotFoundError
+setuptools>=68.0.0,<70.0.0
+scalene>=1.5.0
+boto3>=1.26.0
