@@ -25,11 +25,18 @@ def video_processing(object_key, video_path):
         ret, frame = video.read()
 
         if ret:
+            # 转换为灰度图
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+            # 高斯滤波
+            gaussian = cv2.GaussianBlur(gray_frame, (5, 5), 0)
+            # 中值滤波
+            denoised_frame = cv2.medianBlur(gaussian, 5)
+            
             tmp_file_path = tmp+'tmp.jpg'
-            cv2.imwrite(tmp_file_path, gray_frame)
-            gray_frame = cv2.imread(tmp_file_path)
-            out.write(gray_frame)
+            cv2.imwrite(tmp_file_path, denoised_frame)
+            denoised_frame = cv2.imread(tmp_file_path)
+            out.write(denoised_frame)
         else:
             break
 
