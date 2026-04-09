@@ -1,6 +1,6 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 setup(name="ops",
       version="0.1",
-      packages=find_packages(),
+      py_modules=["ops"],
       )
